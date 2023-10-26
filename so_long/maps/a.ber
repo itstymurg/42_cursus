@@ -1,0 +1,23 @@
+supp1 = num1 % aux
+supp2 = num2 % aux
+while (supp1 != 0 && supp2 != 0)
+{
+    supp1 = num1 % aux
+    supp2 = num2 % aux
+    if (supp1 == 0 && supp2 == 0)
+        break;
+    aux --
+}
+return (aux)
+
+
+12
+
+int pgcd(int n1, int n2)
+{
+    if num 2 == 0
+     retun num1
+     return pcgd(n2 , n1 % n2)
+}
+atoi de los dos num
+
