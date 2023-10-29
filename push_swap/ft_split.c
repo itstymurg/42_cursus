@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	while (s[i])
 	{
-		if (i > 0 && s[i] != c && s[i - 1] == c)
+		if (s[i] != c && s[i - 1] == c)
 			start = i;
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{
