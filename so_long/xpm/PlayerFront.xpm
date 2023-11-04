@@ -240,7 +240,7 @@ static char *result[] = {
 "bX c #E2DDE6",
 "nX c #DFE0E0",
 "mX c #E4E3E4",
-"MX c #E7E4E8",
+"MX c #FFE7E4E8",
 "NX c #FFECECEC",
 "BX c #F1EFEF",
 "VX c #E6E5F4",

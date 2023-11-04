@@ -1,10 +1,10 @@
-NAME = so_long.a
+NAME = so_long
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-CFILES = so_long.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c keey_hook.c
+CFILES = so_long.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c keey_hook.c ft_itoa.c ft_strdup.c flood.c
 
 OBJECTS = $(CFILES:%.c=%.o)
 
