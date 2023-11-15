@@ -12,35 +12,29 @@
 
 #include "pipex.h"
 
-char	*ft_free(char **str)
+char	**path_parsing(char **env)
 {
-	free(*str);
-	*str = NULL;
-	return (NULL);
-}
+	int		i;
+	int		path_exists;
+	char	**my_path;
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*str;
-	size_t	i;
-	size_t	c;
-
-	if (!s1)
+	i = 0;
+	path_exists = 0;
+	while (env[i])
 	{
-		s1 = malloc(sizeof(char) + 1);
-		if (!s1)
-			return (0);
-		s1[0] = 0;
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+		{
+			path_exists = 1;
+			my_path = ft_split(env[i], ':');
+			if (!my_path)
+				my_exit(2, 1);
+			my_path[0] = ft_substr(my_path[0], 5, ft_strlen(my_path[0]));
+			if (!my_path[0])
+				my_exit(2, 1);
+		}
+		i++;
 	}
-	str = (char *)malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!str)
-		return (ft_free(&s1));
-	i = -1;
-	while (s1[++i])
-		str[i] = s1[i];
-	c = -1;
-	while (s2[++c])
-		str[i + c] = s2[c];
-	str[i + c] = '\0';
-	return (str);
+	if (path_exists == 0)
+		my_exit(6, 1);
+	return (my_path);
 }
