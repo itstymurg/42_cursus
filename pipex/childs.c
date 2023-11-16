@@ -17,15 +17,14 @@ void	child1(t_pipex pipex, char **argv, char **env)
 	if (access(argv[1], F_OK) == -1)
 	{
 		close_my_pipe(&pipex);
-		exit(1);
+		my_exit2(5, 1, argv[1]);
 	}
 	pipex.infile = open(argv[1], O_RDONLY);
 	pipex.permision = access(argv[1], R_OK);
 	if (pipex.permision == -1)
 	{
 		close_my_pipe(&pipex);
-		write(1, "No Permissions", 14);
-		exit(1);
+		my_exit2(4, 1, pipex.arg);
 	}
 	dup2(pipex.infile, STDIN_FILENO);
 	if (dup2 (pipex.pipe[1], STDOUT_FILENO) < 0)
@@ -45,7 +44,7 @@ void	child2(t_pipex pipex, char **argv, int argc, char **env)
 	if (pipex.outfile == -1)
 	{
 		close_my_pipe(&pipex);
-		my_exit(5, 1);
+		my_exit(4, 1);
 	}
 	pipex.permision = access(argv[argc - 1], W_OK);
 	if (pipex.permision == -1)
@@ -59,7 +58,7 @@ void	child2(t_pipex pipex, char **argv, int argc, char **env)
 	close_my_pipe(&pipex);
 	pipex.cmds = ft_split(argv[3], ' ');
 	if (!pipex.cmds)
-		return ;
+		exit(127);
 	pipex.cmd = find_cmd(pipex.routes, pipex.cmds[0], &pipex);
 	if (!pipex.cmd)
 		exit(127);

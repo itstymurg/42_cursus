@@ -27,6 +27,7 @@ typedef struct s_pipex
 	char	**routes;
 	char	**cmds;
 	char	*cmd;
+	char	*arg;
 	int		pipe[2];
 	int		infile;
 	int		outfile;
@@ -50,5 +51,6 @@ char			*find_cmd(char **routes, char *cmd, t_pipex *pipex);
 void			find_cmds(t_pipex *pipex, char **argv);
 void			format(int argc);
 char			**path_parsing(char **env);
+void			my_exit2(int status, int error, char *str);
 
 #endif
